@@ -1,3 +1,5 @@
+main = document['getElementsByTagName']('main')[0];
+
 function sitemap(arrayLinks) {
     let h2 = document.createElement('h2');
     h2.innerHTML = 'Sitemap';
