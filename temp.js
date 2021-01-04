@@ -26,3 +26,12 @@ function sitemap(arrayLinks) {
     }
     main['innerHTML'] = h2 + table;
 }
+
+// Поиск значения в url
+function SearchKeyFromLocation(paramInput) {
+    var arrayLines = {};
+    location['search']['replace'](/[?&]+([^=&]+)=([^&]*)/gi, function(s, paramInput, newParamLines) {
+        arrayLines[paramInput] = newParamLines;
+    });
+    return paramInput ? arrayLines[paramInput] : arrayLines
+}
