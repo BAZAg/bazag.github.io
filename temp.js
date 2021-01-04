@@ -26,7 +26,8 @@ function sitemap(arrayLinks) {
             a.innerHTML = arrayLinks[i];
         }
     }
-    main['innerHTML'] = [h2.innerHTML, table.innerHTML].Join(' ');
+    var tempInner = [h2.innerHTML, table.innerHTML];
+    main['innerHTML'] = tempInner.join(' ');
 }
 
 // Поиск значения в url
