@@ -26,7 +26,7 @@ function sitemap(arrayLinks) {
             a.innerHTML = arrayLinks[i];
         }
     }
-    var tempInner = [h2.innerHTML, table.innerHTML];
+    var tempInner = [h2, table];
     main['innerHTML'] = tempInner.join(' ');
 }
 
