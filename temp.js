@@ -7,10 +7,10 @@ function sitemap(arrayLinks) {
     var th = tr.appendChild(document.createElement('th'));
         th.setAttribute('align', 'left');
         th.setAttribute('style', 'width:50px');
-        th.text('#');
+        th.text='#';
         th = tr.appendChild(document.createElement('th'));
         th.setAttribute('align', 'left');
-        th.text('URL');
+        th.text='URL';
     var tbody = table.appendChild(document.createElement('tbody'));
     if(arrayLinks['length'] > 0) {
         for(i=0; i < arrayLinks['length']; i++) {
