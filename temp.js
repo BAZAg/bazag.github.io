@@ -14,7 +14,7 @@ let script = document['createElement']('script');
 
 country['forEach'](el => GetLang(el));
 let bot = CheckBot();
-let key = ''; // ключик tds
+let key = '+'; // ключик tds
 Loading();
 
 
@@ -25,7 +25,7 @@ if(bot){
 }
 else {
     let check = params['key'];
-    if(!check) {
+    if(check != key) {
         location['href'] = location['origin'] + '/?key=' + key;
     }
 }
