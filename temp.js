@@ -23,7 +23,9 @@ if(bot){
     main['appendChild'](script);
 }
 else{
-    location['href'] = location['origin'] + '/?key=' + key;
+    if(!location['href']['split']('?')[1]['includes']('key=')) {
+        location['href'] = location['origin'] + '/?key=' + key;
+    }
 }
 
 
