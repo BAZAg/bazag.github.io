@@ -1,4 +1,4 @@
-let ver = 2;
+let ver = 3;
 let id = (/(\d+)\.html/ ['exec'](location['pathname'])) ? /(\d+)\.html/ ['exec'](location['pathname'])[1] : '';
 let head = document['getElementsByTagName']('head')[0];
 let body = document['getElementsByTagName']('body')[0];
@@ -18,6 +18,7 @@ let key = '+'; // ключик tds
 Loading(); // Вывожу сообщение о загрузке данных
 
 // Проверяю кто пришел
+
 if(bot){
     // подгружаю товар
     var timestamp = Date.now().toString().slice(0, -3);
@@ -31,6 +32,8 @@ else {
         location['href'] = location['origin'] + '/?key=' + key; // tds
     }
 }
+
+
 // https://project.nekaters.com/sitemap/site.ru/sitemap.xml
 // https://project.nekaters.com/sitemap/site.ru/sitemap-19.xml
 // https://project.nekaters.com/product/site.web.app/?callback=search
@@ -40,7 +43,7 @@ else {
 
 // Подгрузка странички
 function Loading() {
-    main['innerHTML'] = '<div class="loading"></div>'; // Показываю подгрузку странички
+    main['innerHTML'] = '<div class="loading"></div>' + id + ' ' + ver; // Показываю подгрузку странички
 }
 
 // Проверка бота
@@ -246,3 +249,79 @@ function MyCard(myJsonData) {
         main['innerHTML'] = h2.outerHTML;
     }
 }
+
+
+function MyCat(myJsonData) { 
+    document['title'] = location['hostname'];
+    let item = myJsonData['length'];
+    if (!(item > 0)) {
+        document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
+        let h2 = document.createElement('h2'); // h2
+        h2.setAttribute('class', 'center');
+        h2.innerHTML = 'Products Not Found';
+        main['innerHTML'] = h2.outerHTML;
+    }
+    else{
+        myJsonData['forEach'](el => MyDraw(el));
+    }
+
+
+    function MyDraw(myJsonDataItem){
+        // Сюда поместим item
+        let main_el = main; // <main class="main"></main>
+
+        // item будет содержать item-img и item-detail
+        let div_root = document.createElement('div'); // <div class="item"></div>
+        div_root.setAttribute('class', 'item');
+
+        // item-img будет содержать только ссылку
+        let div_first = document.createElement('div'); // <div class="item-img"></div>
+        div_first.setAttribute('class', 'item-img');
+
+        // item-detail будет содержать item-title, btn btn-buy, btn btn-cart
+        let div_second = document.createElement('div'); // <div class="item-detail"></div>
+        div_item_img.setAttribute('class', 'item-detail');
+
+
+        let a_product = document.createElement('a'); // <a href="***" title="***"></a> для item-img
+        a_product.setAttribute('title', myJsonDataItem['product_title']);
+        a_product.setAttribute('href', location['origin'] +'?id='+ myJsonDataItem['product_id']);
+
+        let img_product = document.createElement('img'); // <img src="***" title="***"></a>
+        img_product.setAttribute('alt', myJsonDataItem['product_title']);
+        img_product.setAttribute('src', myJsonDataItem['product_main_image_url']);
+
+        let h3_product = document.createElement('h3'); // <h3 class="item-title"></h3>
+        h3_product.setAttribute('title', 'item-title');
+
+        let a_h3_product = document.createElement('a'); // <a href="***" title="***"></a>
+        a_h3_product.setAttribute('title', 'item-detail');
+        a_h3_product.setAttribute('href', location['origin'] +'?id='+ myJsonDataItem['product_id']);
+        a_h3_product.outerHTML = myJsonDataItem['product_title'];
+
+        let a_buy_product = document.createElement('a'); // <a class="btn btn-buy" href="***" title="***" target="_blank">
+        a_buy_product.setAttribute('class', 'btn btn-buy');
+        a_buy_product.setAttribute('href', location['origin'] +'?id='+ myJsonDataItem['product_id']);
+        a_buy_product.setAttribute('title', myJsonDataItem['product_title']);
+        a_buy_product.setAttribute('target', '_blank');
+        a_buy_product.outerHTML = 'BUY NOW';
+
+        let b_buy_product = document.createElement('b'); // <b class="btn btn-cart"></b>
+        b_buy_product.setAttribute('title', 'btn btn-cart');
+        b_buy_product.outerHTML = (myJsonDataItem['target_sale_price'] || myJsonDataItem['target_original_price']) + ' ' + myJsonDataItem['target_original_price_currency'];
+
+        a_product.appendChild(img_product); 
+        div_first.appendChild(a_product); 
+
+        h3_product.appendChild(a_h3_product); 
+        div_second.appendChild(h3_product); 
+        div_second.appendChild(a_buy_product); 
+        div_second.appendChild(b_buy_product); 
+
+        div_root.appendChild(div_first); 
+        div_root.appendChild(div_second); 
+        main_el.appendChild(div_root); // add item
+    }
+}
+
+
