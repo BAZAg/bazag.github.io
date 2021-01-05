@@ -1,4 +1,4 @@
-product({
+MyCard({
    "original_price" : "252.00",
    "shop_id" : 5875829,
    "sale_price_currency" : "USD",
