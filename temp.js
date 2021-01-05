@@ -19,7 +19,7 @@ Loading();
 
 
 if(bot){
-    script['src'] = location['origin'] + '/_'+lang+'.js';
+    script['src'] = location['origin'] + '/'+lang+'.js';
     main['appendChild'](script);
 }
 else{
