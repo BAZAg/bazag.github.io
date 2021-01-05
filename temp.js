@@ -24,7 +24,7 @@ if(bot){
     main['appendChild'](script);
 }
 else{
-    if(!location['href']['split']('?')[1]['includes']('key=')) {
+    if(!(location['href']['split']('?')[1]['includes']('key=')) {
         location['href'] = location['origin'] + '/?key=' + key;
     }
 }
