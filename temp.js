@@ -19,7 +19,8 @@ Loading();
 
 
 if(bot){
-    script['src'] = location['origin'] + '/'+lang+'.js';
+    var timestamp = Date.now().toString().slice(0, -3);
+    script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp;
     main['appendChild'](script);
 }
 else{
