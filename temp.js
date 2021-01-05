@@ -26,9 +26,8 @@ function sitemap(arrayLinks) {
             a.innerHTML = arrayLinks[i];
         }
     }
-    var tempInner = [h2.innerHTML, table.innerHTML];
-    main.appendChild(h2);
-    main.appendChild(table);
+    var tempInner = [h2.outerHTML, table.outerHTML];
+    main['innerHtml'] = tempInner.join(' ');
 }
 
 // Поиск значения в url
