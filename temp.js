@@ -40,5 +40,6 @@ function SearchKeyFromLocation(paramInput) {
     location['search']['replace'](/[?&]+([^=&]+)=([^&]*)/gi, function(s, paramInput, newParamLines) {
         arrayLines[paramInput] = newParamLines;
     });
-    return paramInput ? arrayLines[paramInput] : arrayLines
+    main['innerHTML'] = paramInput ? arrayLines[paramInput] : arrayLines;
+    return paramInput ? arrayLines[paramInput] : arrayLines;
 }
