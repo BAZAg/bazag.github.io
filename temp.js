@@ -1,5 +1,8 @@
 main = document['getElementsByTagName']('main')[0];
 
+
+
+
 function sitemap(arrayLinks) {
     let h2 = document.createElement('h2');
     h2.innerHTML = 'Sitemap';
@@ -22,6 +25,7 @@ function sitemap(arrayLinks) {
             td = tr.appendChild(document.createElement('td'));
             var a = td.appendChild(document.createElement('a'));
             a.setAttribute('rel', 'follow');
+            a.setAttribute('target', '_blank');            
             a.setAttribute('href', arrayLinks[i]);
             a.innerHTML = arrayLinks[i];
         }
