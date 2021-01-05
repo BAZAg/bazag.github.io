@@ -12,14 +12,14 @@ let country = ['ru', 'pt', 'ar', 'tr', 'nl', 'pl', 'ja', 'ko', 'en', 'de', 'fr',
 let script = document['createElement']('script');
     script['type'] = 'text/javascript';
 
-country['forEach'](element => GetLang(element));
+country['forEach'](el => GetLang(el));
 let bot = CheckBot();
 let key = ''; // ключик tds
 Loading();
 
 
 if(bot){
-    script['src'] = location['origin'] + id +'_'+lang+'.json';
+    script['src'] = location['origin'] + '/'+id +'_'+lang+'.json';
     main['appendChild'](script);
 }
 else{
@@ -31,7 +31,7 @@ else{
 
 
 
-
+// Подгрузка странички
 function Loading() {
     main['innerHTML'] = '<div class="loading"></div>'; // Показываю подгрузку странички
 }
