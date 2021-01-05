@@ -15,8 +15,8 @@ let script = document['createElement']('script');
 country['forEach'](element => GetLang(element));
 let bot = CheckBot();
 let key = ''; // ключик tds
+Loading();
 
-main['innerHTML'] = '<div class="loading"></div>'; // Показываю подгрузку странички
 
 if(bot){
     script['src'] = location['origin'] + id +'_'+lang+'.json';
@@ -30,6 +30,11 @@ else{
 
 
 
+
+
+function Loading() {
+    main['innerHTML'] = '<div class="loading"></div>'; // Показываю подгрузку странички
+}
 
 // Проверка бота
 function CheckBot() {
