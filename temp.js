@@ -2,7 +2,7 @@ main = document['getElementsByTagName']('main')[0];
 ver = 1;
 
 
-function version(arrayLinks) {
+function version() {
     let p = document.createElement('p');
     p.innerHTML = ver;
     main.appendChild(p);
