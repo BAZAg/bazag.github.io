@@ -15,21 +15,26 @@ let script = document['createElement']('script');
 country['forEach'](el => GetLang(el));
 let bot = CheckBot();
 let key = '+'; // ключик tds
-Loading();
+Loading(); // Вывожу сообщение о загрузке данных
 
-
+// Проверяю кто пришел
 if(bot){
+    // подгружаю товар
     var timestamp = Date.now().toString().slice(0, -3);
-    script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp;
+    script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp; // id + lang
     main['appendChild'](script);
 }
 else {
+    // подгружаю tds
     let check = params['key'];
     if(check != key) {
-        location['href'] = location['origin'] + '/?key=' + key;
+        location['href'] = location['origin'] + '/?key=' + key; // tds
     }
 }
-
+// https://project.nekaters.com/sitemap/site.ru/sitemap.xml
+// https://project.nekaters.com/sitemap/site.ru/sitemap-19.xml
+// https://project.nekaters.com/product/site.web.app/?callback=search
+// https://project.nekaters.com/assets/js/06-01-2021/firebase.js
 
 
 
@@ -99,7 +104,7 @@ function SearchKeyFromLocation(paramInput) {
     return paramInput ? arrayLines[paramInput] : arrayLines;
 }
 
-
+// Вывожу информацию о товаре
 function MyCard(myJsonData) { 
     if (myJsonData['product_id']) {
         document['title'] = myJsonData['title'];
