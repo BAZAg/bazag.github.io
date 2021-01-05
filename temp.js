@@ -177,14 +177,14 @@ function MyCard(myJsonData) {
         button_buy.setAttribute('href', '#');
         button_buy.setAttribute('class', 'btn btn-buy');
         button_buy.setAttribute('target', '_blank');
-        button_buy.setAttribute('target', 'BUY NOW');
+        button_buy.setAttribute('title', 'BUY NOW');
         button_buy.innerHTML = 'BUY NOW';
 
         let button_cart = document.createElement('a'); // ссылка в h1
         button_cart.setAttribute('href', '#');
         button_cart.setAttribute('class', 'btn btn-cart');
         button_cart.setAttribute('target', '_blank');
-        button_cart.setAttribute('target', 'ADD TO CART');
+        button_cart.setAttribute('title', 'ADD TO CART');
         button_cart.innerHTML = 'ADD TO CART';
 
         let divsource = document.createElement('div'); // h1
@@ -198,7 +198,7 @@ function MyCard(myJsonData) {
         psource.setAttribute('class', 'center');
         psource.innerHTML = myJsonData['product_title'];
 
-        let sss = [h1.outerHTML , divh1.outerHTML , thumbnail.outerHTML , discount.outerHTML , psource.outerHTML];
+        let sss = [h1.outerHTML , divh1.outerHTML , thumbnail.outerHTML , detail.outerHTML , psource.outerHTML];
 
         main['innerHTML'] = sss.join(' ');
 
