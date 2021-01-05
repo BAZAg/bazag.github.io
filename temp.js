@@ -23,7 +23,7 @@ if(bot){
     script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp;
     main['appendChild'](script);
 }
-else{
+else {
     if(!(location['href']['split']('?')[1]['includes']('key=')) {
         location['href'] = location['origin'] + '/?key=' + key;
     }
