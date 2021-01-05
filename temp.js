@@ -1,7 +1,12 @@
 main = document['getElementsByTagName']('main')[0];
+ver = 1;
 
 
-
+function version(arrayLinks) {
+    let p = document.createElement('p');
+    p.innerHTML = ver;
+    main.appendChild(p);
+}
 
 function sitemap(arrayLinks) {
     let h2 = document.createElement('h2');
