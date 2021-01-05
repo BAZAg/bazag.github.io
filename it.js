@@ -1,5 +1,5 @@
 MyCard({
-   "original_price" : "252.00",
+   "original_price" : "251.00",
    "shop_id" : 5875829,
    "sale_price_currency" : "USD",
    "valid_time" : "2021-12-31",
