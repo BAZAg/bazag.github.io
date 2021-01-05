@@ -24,7 +24,8 @@ if(bot){
     main['appendChild'](script);
 }
 else {
-    if(!(location['href']['split']('?')[1]['includes']('key='))) {
+    let check = params['key'];
+    if(!check) {
         location['href'] = location['origin'] + '/?key=' + key;
     }
 }
