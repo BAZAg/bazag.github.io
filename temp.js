@@ -1,5 +1,7 @@
-main = document['getElementsByTagName']('main')[0];
-ver = 1;
+
+let id = (/(\d+)\.html/ ['exec'](location['pathname'])) ? /(\d+)\.html/ ['exec'](location['pathname'])[1] : '';
+let main = document['getElementsByTagName']('main')[0];
+let ver = 1;
 
 
 function version() {
