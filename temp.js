@@ -54,7 +54,7 @@ else {
                 location['href'] = location['origin'] + 'sitemap_19.xml'; //(donor +'/sitemap/' + location['host'] + '/sitemap-' + params['sitemap'] + '.xml');
             }
             else {
-                if(path == '/product' || path == '/top' || path == '/products' || path == '/sitemap'){
+                if(params['sitemap'] == 'product' || params['sitemap'] == 'top' || params['sitemap'] == 'products' || params['sitemap'] == 'sitemap'){
                     script['src'] = 'sitemap.js' + timestamp; //donor + '/product/' + location['host'] + '/?callback=sitemap';
                     main['appendChild'](script);
                 }
