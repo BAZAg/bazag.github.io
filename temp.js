@@ -311,7 +311,7 @@ function MyCat(myJsonData) {
 
         // item-detail будет содержать item-title, btn btn-buy, btn btn-cart
         let div_second = document.createElement('div'); // <div class="item-detail"></div>
-        div_item_img.setAttribute('class', 'item-detail');
+        div_second.setAttribute('class', 'item-detail');
 
 
         let a_product = document.createElement('a'); // <a href="***" title="***"></a> для item-img
