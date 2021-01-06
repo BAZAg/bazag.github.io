@@ -36,8 +36,7 @@ if(id) {
 }
 else {
     if (path == '/') {
-        script['src'] = 'it.js';
-                
+        script['src'] = 'cats.js';
         //script.innerHTML = 
         document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
         //script['src'] = donor +'/api/getProducts/?callback=search&category_ids=' + cat + '&target_language=' + lang;
@@ -68,42 +67,6 @@ else {
 // https://project.nekaters.com/sitemap/site.ru/sitemap-19.xml
 // https://project.nekaters.com/product/site.web.app/?callback=search
 // https://project.nekaters.com/assets/js/06-01-2021/firebase.js
-
-function GetData(dataUrl){
-    // 1. Создаём новый XMLHttpRequest-объект
-    var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-    var xhr = new XHR();
-    xhr.timeout = 10000;
-    // 2. Настраиваем его: GET-запрос по URL /article/.../load
-    xhr.open('GET', dataUrl, true);
-
-    // 3. Отсылаем запрос
-    xhr.send();
-
-    // 4. Этот код сработает после того, как мы получим ответ сервера
-    xhr.onload = function() {
-      if (xhr.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
-        console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`); // Например, 404: Not Found
-      } else { // если всё прошло гладко, выводим результат
-        console.log(`Готово, получили ${xhr.response.length} байт`); // response -- это ответ сервера
-      }
-    };
-
-    xhr.onprogress = function(event) {
-      if (event.lengthComputable) {
-        console.log(`Получено ${event.loaded} из ${event.total} байт`);
-      } else {
-        console.log(`Получено ${event.loaded} байт`); // если в ответе нет заголовка Content-Length
-      }
-
-    };
-
-    xhr.onerror = function() {
-      console.log("Запрос не удался");
-    };
-    return xhr.response;
-}
-
 
 // Подгрузка странички
 function Loading() {
