@@ -353,7 +353,7 @@ function MyCat(myJsonData) {
         div_root.appendChild(div_first); 
         div_root.appendChild(div_second); 
         main_el.appendChild(div_root); // add item
-        sleep(100);
+        new Promise(sleep => setTimeout(sleep, 100)); // задержка отрисовки
     }
 }
 
