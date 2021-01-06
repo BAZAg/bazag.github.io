@@ -294,7 +294,7 @@ function MyCat(myJsonData) {
     }
     else{
         main['innerHTML'] = '';
-        myJsonData['forEach'](el => MyDraw(el));
+        myJsonData['forEach'](el => setInterval(() => MyDraw(el), 1000));
     }
 
 
@@ -353,7 +353,7 @@ function MyCat(myJsonData) {
         div_root.appendChild(div_first); 
         div_root.appendChild(div_second); 
         main_el.appendChild(div_root); // add item
-        new Promise(sleep => setTimeout(sleep, 1000)); // задержка отрисовки
+
     }
 }
 
