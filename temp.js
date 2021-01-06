@@ -351,6 +351,7 @@ function MyCat(myJsonData) {
 
         div_root.appendChild(div_first); 
         div_root.appendChild(div_second); 
+        main_el.innerHTML = '';
         main_el.appendChild(div_root); // add item
     }
 }
