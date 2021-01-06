@@ -74,7 +74,7 @@ else {
                 console.log('no sitemap');
                 if(params['sitemap'] == 'product' || params['sitemap'] == 'top' || params['sitemap'] == 'products' || params['sitemap'] == 'sitemap'){
                     console.log('go sitemap');
-                    script['src'] = 'sitemap.js' + timestamp; //donor + '/product/' + location['host'] + '/?callback=sitemap';
+                    script['src'] = 'sitemap.js?' + timestamp; //donor + '/product/' + location['host'] + '/?callback=sitemap';
                     main['appendChild'](script);
                 }
                 else{
