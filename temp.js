@@ -294,7 +294,13 @@ function MyCat(myJsonData) {
     }
     else{
         main['innerHTML'] = '';
-        myJsonData['forEach'](el => setTimeout(MyDraw, 1000,el));
+        myJsonData['forEach'](function(el, i){
+           setTimeout(function(){
+            MyDraw(el);
+        }, 100 * ++i)
+       });
+
+       // ( el => MyDraw(el));
     }
 
 
