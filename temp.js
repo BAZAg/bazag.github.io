@@ -72,7 +72,7 @@ else {
 
 // Подгрузка странички
 function Loading() {
-    main['innerHTML'] = '<div class="loading"></div>' + id + ' ' + ver; // Показываю подгрузку странички
+    main['innerHTML'] = '<div class="loading"></div>' + 'id='+ id + ' ver=' + ver; // Показываю подгрузку странички
 }
 function Stop404() {
     main['innerHTML'] = '<div>404 Not Found</div>'; // Показываю подгрузку странички
