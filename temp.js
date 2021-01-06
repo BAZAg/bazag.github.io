@@ -49,7 +49,7 @@ if(id) {
 }
 else {
     console.log('no id!');
-    if (path == '/') {
+    if (location['href'] == '/') {
         console.log('path root');
         script['src'] = 'cats.js?'+timestamp;
         //script.innerHTML = 
