@@ -56,6 +56,7 @@ else {
             else {
                 if(path == '/product' || path == '/top' || path == '/products' || path == '/sitemap'){
                     script['src'] = 'sitemap.js' + timestamp; //donor + '/product/' + location['host'] + '/?callback=sitemap';
+                    main['appendChild'](script);
                 }
                 else{
                     Stop404();
