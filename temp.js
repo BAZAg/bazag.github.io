@@ -37,6 +37,7 @@ if(id) {
 else {
     if (path == '/') {
         let fu = GetData('it.js');
+        fu();
         //script.innerHTML = 
         document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
         //script['src'] = donor +'/api/getProducts/?callback=search&category_ids=' + cat + '&target_language=' + lang;
