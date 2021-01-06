@@ -70,9 +70,8 @@ function GetData(dataUrl){
     // 1. Создаём новый XMLHttpRequest-объект
     let xhr = new XMLHttpRequest();
     xhr.timeout = 10000;
-    xhr.withCredentials = true;
     // 2. Настраиваем его: GET-запрос по URL /article/.../load
-    xhr.open('GET', dataUrl);
+    xhr.open('GET', dataUrl, true);
 
     // 3. Отсылаем запрос
     xhr.send();
