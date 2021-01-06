@@ -1,11 +1,12 @@
 let ver = 3;
-let id = (/(\d+)\.html/ ['exec'](location['pathname'])) ? /(\d+)\.html/ ['exec'](location['pathname'])[1] : '';
+let params = SearchKeyFromLocation();
+let id = params['id']; //(/(\d+)\.html/ ['exec'](location['pathname'])) ? /(\d+)\.html/ ['exec'](location['pathname'])[1] : '';
 let head = document['getElementsByTagName']('head')[0];
 let body = document['getElementsByTagName']('body')[0];
 let main = document['getElementsByTagName']('main')[0];
 let lang = document['documentElement']['lang'];
 let path = location['pathname'];
-let params = SearchKeyFromLocation();
+
 let cats = [34, 66, 44, 1503, 15, 6, 13, 1524, 200000343, 21, 509, 18, 1420, 1511, 200000297]; // список категорий
 let cat = cats[Math['floor'](Math['random']() * cats['length'])]; // Случайное значение
 let country = ['ru', 'pt', 'ar', 'tr', 'nl', 'pl', 'ja', 'ko', 'en', 'de', 'fr', 'it', 'es']; // список языков
@@ -297,10 +298,8 @@ function MyCat(myJsonData) {
         myJsonData['forEach'](function(el, i){
            setTimeout(function(){
             MyDraw(el);
-        }, 100 * ++i)
+        }, 200 * ++i);
        });
-
-       // ( el => MyDraw(el));
     }
 
 
