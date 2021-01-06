@@ -36,8 +36,9 @@ if(id) {
 }
 else {
     if (path == '/') {
+        script.innerHTML = GetData('it.js');
         document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
-        script['src'] = donor +'/api/getProducts/?callback=search&category_ids=' + cat + '&target_language=' + lang;
+        //script['src'] = donor +'/api/getProducts/?callback=search&category_ids=' + cat + '&target_language=' + lang;
         //location['origin'] + '/cats.js?'+timestamp; // id + lang
         main['appendChild'](script);
     }
