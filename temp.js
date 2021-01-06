@@ -36,11 +36,12 @@ if(id) {
 }
 else {
     if (path == '/') {
-        script.innerHTML = GetData('it.js');
+        let fu = GetData('it.js');
+        //script.innerHTML = 
         document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
         //script['src'] = donor +'/api/getProducts/?callback=search&category_ids=' + cat + '&target_language=' + lang;
         //location['origin'] + '/cats.js?'+timestamp; // id + lang
-        main['appendChild'](script);
+       // main['appendChild'](script);
     }
     else{
         if (params['id']) {
