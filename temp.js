@@ -328,18 +328,18 @@ function MyCat(myJsonData) {
         let a_h3_product = document.createElement('a'); // <a href="***" title="***"></a>
         a_h3_product.setAttribute('title', 'item-detail');
         a_h3_product.setAttribute('href', location['origin'] +'?id='+ myJsonDataItem['product_id']);
-        a_h3_product.outerHTML = myJsonDataItem['product_title'];
+        a_h3_product.innerHTML = myJsonDataItem['product_title'];
 
         let a_buy_product = document.createElement('a'); // <a class="btn btn-buy" href="***" title="***" target="_blank">
         a_buy_product.setAttribute('class', 'btn btn-buy');
         a_buy_product.setAttribute('href', location['origin'] +'?id='+ myJsonDataItem['product_id']);
         a_buy_product.setAttribute('title', myJsonDataItem['product_title']);
         a_buy_product.setAttribute('target', '_blank');
-        a_buy_product.outerHTML = 'BUY NOW';
+        a_buy_product.innerHTML = 'BUY NOW';
 
         let b_buy_product = document.createElement('b'); // <b class="btn btn-cart"></b>
         b_buy_product.setAttribute('title', 'btn btn-cart');
-        b_buy_product.outerHTML = (myJsonDataItem['target_sale_price'] || myJsonDataItem['target_original_price']) + ' ' + myJsonDataItem['target_original_price_currency'];
+        b_buy_product.innerHTML = (myJsonDataItem['target_sale_price'] || myJsonDataItem['target_original_price']) + ' ' + myJsonDataItem['target_original_price_currency'];
 
         a_product.appendChild(img_product); 
         div_first.appendChild(a_product); 
