@@ -293,6 +293,7 @@ function MyCat(myJsonData) {
         main['innerHTML'] = h2.outerHTML;
     }
     else{
+        main['innerHTML'] = '';
         myJsonData['forEach'](el => MyDraw(el));
     }
 
@@ -351,8 +352,8 @@ function MyCat(myJsonData) {
 
         div_root.appendChild(div_first); 
         div_root.appendChild(div_second); 
-        main_el.innerHTML = '';
         main_el.appendChild(div_root); // add item
+        sleep(100);
     }
 }
 
