@@ -36,6 +36,7 @@ if(id) {
         // подгружаю товар        
         script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp; // id + lang
         main['appendChild'](script);
+        document['querySelector']('meta[name="robots"]')['content'] = 'index,follow';
     }
     else {
         console.log('tds!');
