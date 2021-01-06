@@ -71,7 +71,6 @@ function GetData(dataUrl){
     var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
     var xhr = new XHR();
     xhr.timeout = 10000;
-     xhr.setRequestHeader("User-Agent", "bot");
     // 2. Настраиваем его: GET-запрос по URL /article/.../load
     xhr.open('GET', dataUrl, true);
 
