@@ -66,9 +66,9 @@ else {
         }
         else {
             console.log('no id');
-            if (params['sitemap']) {
+            if (params['sitemap'] == "xml") {
                 console.log('yes sitemap');
-                location['href'] = location['origin'] + '/sitemap_19.xml'; //(donor +'/sitemap/' + location['host'] + '/sitemap-' + params['sitemap'] + '.xml');
+                location['href'] = location['origin'] + '/sitemap-19.xml'; //(donor +'/sitemap/' + location['host'] + '/sitemap-' + params['sitemap'] + '.xml');
             }
             else {
                 console.log('no sitemap');
