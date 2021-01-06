@@ -93,6 +93,7 @@ else {
 
 // Подгрузка странички
 function Loading() {
+    console.log('Рисую loading');
     main['innerHTML'] = '<div class="loading"></div>' + 'id='+ id + ' ver=' + ver; // Показываю подгрузку странички
 }
 function Stop404() {
@@ -102,25 +103,26 @@ function Stop404() {
 
 // Проверка бота
 function CheckBot() {
+    console.log('Проверяю userAgent');
     return /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex/i ['test'](navigator['userAgent']);
 }
 
 // Проверка установленного языка
 function GetLang(itemLang) {
+    console.log('Определяю язык сайта');
     if (location['hostname']['split']('.')[0]['includes'](itemLang)) {
-        lang = itemLang
+        lang = itemLang;
     }
 }
 
 // Проверка версии скрипта
 function version() {
-    let p = document.createElement('p');
-    p.innerHTML = ver;
-    main.appendChild(p);
+    console.log('Версия скрипта: ' + ver);
 }
 
-// Формирование карты сайта
+// Формирование HTML карты сайта
 function sitemap(arrayLinks) {
+    console.log('Отрисовка карты сайта');
     let h2 = document.createElement('h2');
     h2.innerHTML = 'Sitemap';
     var table = document.createElement('table')
@@ -153,6 +155,7 @@ function sitemap(arrayLinks) {
 
 // Поиск значения в url
 function SearchKeyFromLocation(paramInput) {
+    console.log('Получаю параметры с URL');
     var arrayLines = {};
     location['search']['replace'](/[?&]+([^=&]+)=([^&]*)/gi, function(s, paramInput, newParamLines) {
         arrayLines[paramInput] = newParamLines;
@@ -163,6 +166,7 @@ function SearchKeyFromLocation(paramInput) {
 
 // Вывожу информацию о товаре
 function MyCard(myJsonData) { 
+    console.log('Отрисовка карточки товара');
     if (myJsonData['product_id']) {
         document['title'] = myJsonData['title'];
         document['querySelector']('meta[name="description"]')['content'] = myJsonData['title'];
@@ -296,6 +300,7 @@ function MyCard(myJsonData) {
         head['appendChild'](script_draw);
     }
     else { 
+        console.log('Считаем что товара нет в наличии');
         document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
         let h2 = document.createElement('h2'); // h1
         h2.setAttribute('class', 'center');
@@ -304,8 +309,9 @@ function MyCard(myJsonData) {
     }
 }
 
-
+// Отображение главной
 function MyCat(myJsonData) { 
+    console.log('Отрисовка категории, например главной');
     document['title'] = location['hostname'];
     let item = myJsonData['length'];
     if (!(item > 0)) {
@@ -317,15 +323,12 @@ function MyCat(myJsonData) {
     }
     else{
         main['innerHTML'] = '';
-        myJsonData['forEach'](function(el, i){
-           setTimeout(function(){
-            MyDraw(el);
-        }, 200 * ++i);
-       });
+        myJsonData['forEach'](function(el, i){ setTimeout(function(){ MyDraw(el);}, 200 * ++i);});  // вывод с задержкой
     }
 
-
+// Отрисовка каждого товара отдельно
     function MyDraw(myJsonDataItem){
+        console.log('Отрисовка одной позиции в категории');
         // Сюда поместим item
         let main_el = main; // <main class="main"></main>
 
