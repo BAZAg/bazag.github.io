@@ -4,40 +4,53 @@ let body = document['getElementsByTagName']('body')[0];
 let main = document['getElementsByTagName']('main')[0];
 let lang = document['documentElement']['lang'];
 let path = location['pathname'];
+console.log('path='+path);
 
 let params = SearchKeyFromLocation();
 let id = params['id']; //(/(\d+)\.html/ ['exec'](location['pathname'])) ? /(\d+)\.html/ ['exec'](location['pathname'])[1] : '';
+console.log('id='+id);
 
 let cats = [34, 66, 44, 1503, 15, 6, 13, 1524, 200000343, 21, 509, 18, 1420, 1511, 200000297]; // список категорий
 let cat = cats[Math['floor'](Math['random']() * cats['length'])]; // Случайное значение
+console.log('cat='+cat);
 let country = ['ru', 'pt', 'ar', 'tr', 'nl', 'pl', 'ja', 'ko', 'en', 'de', 'fr', 'it', 'es']; // список языков
 let script = document['createElement']('script');
     script['type'] = 'text/javascript';
 let donor = 'https://project.nekaters.com';
 
 country['forEach'](el => GetLang(el));
+console.log('lang='+lang);
+
 let bot = CheckBot();
+console.log('bot='+bot);
 let key = '+'; // ключик tds
 Loading(); // Вывожу сообщение о загрузке данных
 var timestamp = Date.now().toString().slice(0, -3);
+console.log('timestamp='+timestamp);
 // Проверяю кто пришел
 
 if(id) {
+    console.log('yes id!');
     if(bot){
+        console.log('bot!');
         // подгружаю товар        
         script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp; // id + lang
         main['appendChild'](script);
     }
     else {
+        console.log('tds!');
         // подгружаю tds
         let check = params['key'];
         if(check != key) {
+            console.log('stop tds!');
             location['href'] = location['origin'] + '/?key=' + key; // tds
         }
     }
 }
 else {
+    console.log('no id!');
     if (path == '/') {
+        console.log('path root');
         script['src'] = 'cats.js?'+timestamp;
         //script.innerHTML = 
         document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
@@ -46,19 +59,26 @@ else {
         main['appendChild'](script);
     }
     else{
+        console.log('path NO root');
         if (params['id']) {
+            console.log('yes id');
             location['href'] = location['origin'] + '/?id=' + params['id'];
         }
         else {
+            console.log('no id');
             if (params['sitemap']) {
+                console.log('yes sitemap');
                 location['href'] = location['origin'] + 'sitemap_19.xml'; //(donor +'/sitemap/' + location['host'] + '/sitemap-' + params['sitemap'] + '.xml');
             }
             else {
+                console.log('no sitemap');
                 if(params['sitemap'] == 'product' || params['sitemap'] == 'top' || params['sitemap'] == 'products' || params['sitemap'] == 'sitemap'){
+                    console.log('go sitemap');
                     script['src'] = 'sitemap.js' + timestamp; //donor + '/product/' + location['host'] + '/?callback=sitemap';
                     main['appendChild'](script);
                 }
                 else{
+                    console.log('go 404');
                     Stop404();
                 }
             }
