@@ -36,7 +36,7 @@ if(id) {
 }
 else {
     if (path == '/') {
-        script['src'] = 'cats.js';
+        script['src'] = 'cats.js?'+timestamp;
         //script.innerHTML = 
         document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
         //script['src'] = donor +'/api/getProducts/?callback=search&category_ids=' + cat + '&target_language=' + lang;
