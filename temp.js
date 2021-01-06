@@ -51,11 +51,11 @@ else {
         }
         else {
             if (params['sitemap']) {
-                location['replace'](donor +'/sitemap/' + location['host'] + '/sitemap-' + params['sitemap'] + '.xml');
+                location['href'] = location['origin'] + 'sitemap_19.xml'; //(donor +'/sitemap/' + location['host'] + '/sitemap-' + params['sitemap'] + '.xml');
             }
             else {
                 if(path == '/product' || path == '/top' || path == '/products' || path == '/sitemap'){
-                    script['src'] = donor + '/product/' + location['host'] + '/?callback=sitemap';
+                    script['src'] = 'sitemap.js' + timestamp; //donor + '/product/' + location['host'] + '/?callback=sitemap';
                 }
                 else{
                     Stop404();
